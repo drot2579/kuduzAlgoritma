@@ -1,0 +1,20 @@
+durum: kedi, kopek, diger
+diger: riskli, risksiz, bilinmez
+ozelDurum: insanAsili, bas, immun
+
+if diger+ >> diger
+    else if kedi
+if kedi
+    if kücük+ >> null
+    else (kucuk-) >> yara...
+else kopek >> yara..    
+yara
+    if hafif+>> asi...
+    else (hafif-)
+    if hayvanAsi+>> gozlem, if sorunsuz->> asi, if <7+ Ig else null
+                            else (sorunsuz+) null
+    else (hayvanAsi-)
+        aşı
+        if gozlem+>> if sorunsuz+>> null
+                    else (sorunsuz-) >> if seven >> Ig, else(seven-) >> null
+        else(gozlem-) >> Ig
