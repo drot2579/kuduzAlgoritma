@@ -442,3 +442,12 @@ function kdz() {
 
 
 <p>Lorem Ipsum <audio id="sound1" src="assets/donkey2.mp3" preload="auto"></audio><a class="icon fa-volume-up" onclick="document.getElementById('sound1').play();"></a>
+
+
+        <audio id="sound1" src="yoursound.mp3" preload="auto"></audio>
+  <button onclick="document.getElementById('sound1').play();">Play
+  it</button>
+
+
+  
+let sonucMetin1 = `Kedi/köpek 10 gün boyunca gözlem altında tutulur. Hayvanın kaçması, ölmesi, hastalık belirtisi göstermesi durumunda ilk aşıdan itibaren 7 gün geçmedi ise aşı ve Ig uygulanır.`

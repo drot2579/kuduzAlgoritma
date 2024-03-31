@@ -97,8 +97,11 @@ button {
     align-items: center;
     flex-grow: 1;
     border-bottom: 2vh solid hsl(180, 100%, 23%);
-    border-collapse: collapse;
     cursor: pointer;
+    padding: 0rem 1rem;
+    /* line-height: 2rem; */
+
+
 }
 
 div,
@@ -116,4 +119,11 @@ button:hover {
 
 div:hover button:not(:hover) {
 
+}
+
+
+article.farkliTemas {
+    width: 80vw;
+    height: 80vh;
+    background-color: #404040;
 }
