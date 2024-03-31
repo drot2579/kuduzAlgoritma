@@ -11,7 +11,7 @@ const rigHesap = (hastaKg, insanMi = 0) => hastaKg * (insanMi ? 20 : 40);
 // kepek: KEdi veya köPEK
 
 // kedi veya köpek tarafından yaralanma haricinde bir olay mı?
-// kedikopek +/- ?
+// kediKopek +/- ?
 
 // ozelDurum: bas-boyun yarası mı, imm. yet. var mı, aşılı(bağışıklı) insan mı, pkkt mi, standart mi ?
 // bas yetmez bagisik pkkt standart ?
@@ -35,75 +35,161 @@ const rigHesap = (hastaKg, insanMi = 0) => hastaKg * (insanMi ? 20 : 40);
 // sonuçlar: asi-noasi, ig-noig, gozlem-nogozlem, asi2doz,asivegozlem, hicbirsey
 
 
-let [kedikopek, ozelDurum, hafifYara, imkan, hayvanAsi, sorunsuz, yedidenAz,] = [null];
+let kediKopek, ozelDurum, hafifYara, imkan, hayvanAsi, sorunsuz, yedidenAz;
 let ozelDurumlar = ["bas", "yetmez", "bagisik", "tirmik"];
+
+
+const display = {
+    framesOff: [{ display: "none" }],
+    timingOff: { fill: "forwards" },
+    framesOn: [{ display: "" }],
+    timingOn: { fill: "forwards" },
+    on(elem) {
+        elem.animate(this.framesOn, this.timingOn)
+    },
+    off(elem) {
+        elem.animate(this.framesOff, this.timingOff)
+    }
+}
+
+// HIDE ALL SECTIONS BUT FIRST
+function hideAllButFirst() {
+    document.querySelectorAll("main>section:not(.first)").forEach((el) => {
+        display.off(el)
+    })
+}
+
+// const inputs = {}
+// document.body.parentElement.parentElement
+
+// let cs = document.querySelector("section.kediKopek")
+// document.querySelectorAll('button').forEach((btn) => {
+//     btn.addEventListener("click", (e) => {
+//         let curSec = e.target.parentElement.parentElement
+//         let key = curSec.classList[0]
+//         inputs[key] = e.target.value
+//         console.log(this);
+//     })
+// })
+
+// function eval(e) {
+//     let tar = e.target
+//     let surSec = tar.parentElement.parentElement
+//     let val = tar.value
+
+// }
+
+
+/* 
+aid 0       
+aid 1       
+aid 11      // exit
+aid 12      // exit
+aid 13      // exit
+aid 10      
+aid 101     
+aid 1011    
+aid 10111   // exit
+aid 10110   // exit
+aid 1010    // exit
+aid 100     
+aid 1001    
+aid 10011   
+aid 100111  // exit
+aid 100110  // exit
+aid 1000    
+aid 10001   
+aid 100011  // exit
+aid 100010  
+aid 1000101 // exit
+aid 100100  // exit
+aid 10000   // exit
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function kdz() {
 
-    kedikopek = confirm("kedikopek ?");
-    if (!kedikopek) {
+    if (!kediKopek) {
+        // aid 0
         alert("developing");
     } else {
-        ozelDurum = prompt(ozelDurumlar.join(", ") + "?");
+        // aid 1
         if (ozelDurum == "bas" || ozelDurum == "yetmez") {
-            // exit2
+            // aid 11           // exit
             alert("asi,ig");
         } else if (ozelDurum == "bagisik") {
-            // exit3
+            // aid 12           // exit
             alert("asi2doz");
         } else if (ozelDurum == "tirmik") {
-            // exit4
+            // aid 13           // exit
             alert("hicbirsey");
         } else {
-            hafifYara = prompt("hafifYara?");
+            // aid 10
             if (hafifYara) {
-                imkan = prompt("gözlem imkanı?");
+                // aid 101
                 if (imkan) {
+                    // aid 1011
                     alert("gozlem");
-                    sorunsuz = prompt("sorunsuz?");
                     if (sorunsuz) {
-                        // exit4
+                        // aid 10111            // exit
                         alert("noasi,noig");
                     } else {
-                        // exit5
+                        // aid 10110            // exit
                         alert("asi,noig");
                     }
                 } else {
-                    // exit6
+                    // aid 1010         // exit
                     alert("asi,noig");
                 }
             } else {
-                hayvanAsi = prompt("hayvanAsi?");
+                // aid 100
                 if (hayvanAsi) {
+                    // aid 1001
                     imkan = true; // öyle varsayılıyor
+                    // aid 10011
                     alert("noasi,noig,gozlem");
-                    sorunsuz == confirm("sorunsuz?");
                     if (sorunsuz) {
-                        // exit7
+                        // aid 100111           // exit
                         alert("hicbirsey");
                     } else {
-                        // exit8
+                        // aid 100110           // exit
                         alert("asi,ig");
                     }
                 } else {
-                    imkan = confirm("imkan?");
+                    // aid 1000
                     if (imkan) {
+                        // aid 10001
                         alert("asi,gozlem");
-                        sorunsuz = confirm("sorunsuz?");
                         if (sorunsuz) {
-                            // exit9
+                            // aid 100011           // exit
                             alert("hicbirsey");
                         } else {
-                            yedidenAz = prompt("yedidenAz?");
+                            // aid 100010
                             if (yedidenAz) {
-                                // exit10
+                                // aid 1000101          // exit
                                 alert("ig");
                             } else {
-                                // exit11
+                                // aid 100100           // exit
                                 alert("hicbirsey");
                             }
                         }
                     } else {
-                        // exit12
+                        // aid 10000            // exit
                         alert("asi,ig");
                     }
 
@@ -112,5 +198,4 @@ function kdz() {
         }
     }
 }
-
 

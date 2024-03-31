@@ -18,3 +18,284 @@ yara
         if gozlem+>> if sorunsuz+>> null
                     else (sorunsuz-) >> if seven >> Ig, else(seven-) >> null
         else(gozlem-) >> Ig
+
+
+
+        
+function kdz() {
+
+    kedikopek = confirm("kedikopek ?");
+    if (!kedikopek) {
+        alert("developing");
+    } else {
+        ozelDurum = prompt(ozelDurumlar.join(", ") + "?");
+        if (ozelDurum == "bas" || ozelDurum == "yetmez") {
+            // exit2
+            alert("asi,ig");
+        } else if (ozelDurum == "bagisik") {
+            // exit3
+            alert("asi2doz");
+        } else if (ozelDurum == "tirmik") {
+            // exit4
+            alert("hicbirsey");
+        } else {
+            hafifYara = prompt("hafifYara?");
+            if (hafifYara) {
+                imkan = prompt("gözlem imkanı?");
+                if (imkan) {
+                    alert("gozlem");
+                    sorunsuz = prompt("sorunsuz?");
+                    if (sorunsuz) {
+                        // exit4
+                        alert("noasi,noig");
+                    } else {
+                        // exit5
+                        alert("asi,noig");
+                    }
+                } else {
+                    // exit6
+                    alert("asi,noig");
+                }
+            } else {
+                hayvanAsi = prompt("hayvanAsi?");
+                if (hayvanAsi) {
+                    imkan = true; // öyle varsayılıyor
+                    alert("noasi,noig,gozlem");
+                    sorunsuz == confirm("sorunsuz?");
+                    if (sorunsuz) {
+                        // exit7
+                        alert("hicbirsey");
+                    } else {
+                        // exit8
+                        alert("asi,ig");
+                    }
+                } else {
+                    imkan = confirm("imkan?");
+                    if (imkan) {
+                        alert("asi,gozlem");
+                        sorunsuz = confirm("sorunsuz?");
+                        if (sorunsuz) {
+                            // exit9
+                            alert("hicbirsey");
+                        } else {
+                            yedidenAz = prompt("yedidenAz?");
+                            if (yedidenAz) {
+                                // exit10
+                                alert("ig");
+                            } else {
+                                // exit11
+                                alert("hicbirsey");
+                            }
+                        }
+                    } else {
+                        // exit12
+                        alert("asi,ig");
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+        <section class="kediKopek eh first">
+            <p class="soru">kedi veya köpek yarası mı?</p>
+            <div>
+                <button value="kediKopek$" class="hayir">hayır</button>
+                <button value="kediKopek" class="evet">evet</button>
+            </div>
+        </section>
+
+        <section class="ozelDurum coklu">
+            <p class="soru">Aşağıdaki durumlardan hangisi mevcut?</p>
+            <div>
+                <button value="yetmez" class="yetmez">immunyetmezlik</button>
+                <button value="bas" class="bas">bas-boyun yaralanması</button>
+                <button value="bagisik" class="bagisik">Hasta daha önce kuduza karşı aşılanmış</button>
+                <button value="tirmik" class="tirmik">küçük, kanamsız kedi tırmalamsı</button>
+                <button value="ozelDurum$" class="hicbiri">hicbiri</button>
+            </div>
+        </section>
+
+        <section class="eylem ig">
+            <h2>Aşı + Ig</h2>
+            <p> ımmunglabulin ve 4 doz kuduz aşısı önerilir</p>
+        </section>
+
+        <section class="eylem ikiDoz">
+            <h2>2 doz aşı</h2>
+            <p> 0 ve 3. günlerde toplam 2 doz kuduz aşısı önerilir</p>
+        </section>
+        
+        <section class="eylem hicbirsey">
+            <h2>Profilaksi önerilmiyor</h2>
+            <p>Herhangi bir kuduz profilaksisi önerilmiyor</p>
+        </section>
+
+        <section class="eh">
+            <p class="soru">kedi veya köpek yarası mı?</p>
+            <div>
+                <button value="" class="hayir">hayır</button>
+                <button value="evet" class="evet">evet</button>
+            </div>
+        </section>
+
+
+        
+const algObj = {
+
+    kediKopek$: "ileride eklenecek",
+    kediKopek: {
+        ozelDurum: {
+            bas: { sonuc: "2doz" },
+            yetmez: { sonuc: "asi + ig" },
+            bagisik: { sonuc: "asi + ig" },
+            tirmik: { sonuc: "hicbirsey" },
+        },
+        ozelDurum$: {
+            hafifYara: {
+                imkan: {
+                    sonuc: {
+                        gozlem: {
+                            sorunsuz: { gozSonuc: "hicbirsey" },
+                            sorunsuz$: { gozSonuc: "asi" },
+                        }
+                    }
+                },
+                imkan$: { sonuc: "asi" },
+            },
+            hafifYara$: {
+                hayvanAsi: {
+                    imkan: {
+                        sonuc: {
+                            gozlem: {
+                                sorunsuz: "hicbirsey",
+                                sorunsuz$: { gozSonuc: "asi + ig" },
+                            }
+                        }
+                    },
+                },
+                hayvanAsi$: {
+                    imkan: {
+                        sonuc: {
+                            asiVeGozlem: {
+                                sorunsuz: { gozSonuc: "hicbirsey" },
+                                sorunsuz$: { gozSonuc: { yedidenAz: "asi + ig", yedidenAz$: "asi" } },
+                            }
+                        }
+                    },
+                    imkan$: {
+                        sonuc: "asi + ig"
+                    },
+                },
+            },
+        }
+    },
+}
+
+
+
+const algObj2 = {
+    durum: {
+        konu: "Temas Türü",
+        soru: "Kedi veya köpek yaralanması mı?",
+        siklar: {
+            kediKopek$: {
+                etiket: "hayır",
+                konu: "Farklı Temaslar",
+                soru: "Temas hangisine uyuyor?",
+                siklar: {} // sonra eklenecek
+            },
+            kediKopek: {
+                etiket: "evet",
+                konu: "Özel Durum",
+                soru: "Hangi özel durum mevcut?",
+                siklar: {
+                    bas: { etiket: "Baş-boyun yaralanması", sonuc: "2doz" },
+                    yetmez: { etiket: "İmmunyetmezlik", sonuc: "asi + ig" },
+                    bagisik: { etiket: "Daha önce de aşılanmış", sonuc: "asi + ig" },
+                    tirmik: { etiket: "pkkkt", sonuc: "hicbirsey" },
+                    ozelDurum$: {
+                        etiket: "hicbiri",
+                        konu: "Yara ciddiyeti",
+                        soru: "Yara hangi tarife uyuyor?",
+                        siklar: {
+                            hafifYara: {
+                                etiket: "Kategori2 tarifleri",
+                                konu: "Gözlem İmkanı",
+                                soru: "Hayvanı gözetim altında tutma imkanı var mı?",
+                                siklar: {
+                                    imkan: {
+                                        etiket: "evet",
+                                        sonuc: {
+                                            gozlem: {
+                                                sorunsuz: { gozSonuc: "hicbirsey" },
+                                                sorunsuz$: { gozSonuc: "asi" },
+                                            }
+                                        }
+                                    },
+                                    imkan$: {
+                                        etiket: "hayır",
+                                        sonuc: "asi"
+                                    },
+                                },
+                            },
+                            hafifYara$: {
+                                etiket: "Kategori3 tarifleri",
+                                konu: "Hayvan Aşı Durumu",
+                                soru: "İgili hayvan son 1 sene içinde kuduz aşısı olmuş mu?",
+                                siklar: {
+                                    hayvanAsi: {
+                                        etiket: "evet",
+                                        konu: "Gözlem İmkanı",
+                                        soru: "Hayvanı gözetim altında tutma imkanı var mı?",
+
+                                        siklar: {
+                                            imkan: {
+                                                sonuc: {
+                                                    gozlem: {
+                                                        sorunsuz: "hicbirsey",
+                                                        sorunsuz$: { gozSonuc: "asi + ig" },
+                                                    }
+                                                }
+                                            },
+                                        }
+
+                                    },
+                                    hayvanAsi$: {
+                                        etiket: "hayır",
+                                        konu: "Gözlem İmkanı",
+                                        soru: "Hayvanı gözetim altında tutma imkanı var mı?",
+                                        siklar: {
+                                            imkan: {
+                                                sonuc: {
+                                                    asiVeGozlem: {
+                                                        sorunsuz: { gozSonuc: "hicbirsey" },
+                                                        sorunsuz$: {
+                                                            gozSonuc: {
+                                                                yedidenAz: "asi + ig", yedidenAz$: "asi"
+                                                            }
+                                                        },
+                                                    }
+                                                }
+                                            },
+                                            imkan$: {
+                                                sonuc: "asi + ig"
+                                            },
+                                        },
+
+                                    },
+                                },
+
+                            },
+                        },
+
+                    },
+                },
+
+            },
+        },
+    },
+}
+
