@@ -299,3 +299,146 @@ const algObj2 = {
     },
 }
 
+
+// pkkt : Provoke Kanamasız Kedi Tırmalaması
+// kepek: KEdi veya köPEK
+
+// kedi veya köpek tarafından yaralanma haricinde bir olay mı?
+// kediKopek +/- ?
+
+// ozelDurum: bas-boyun yarası mı, imm. yet. var mı, aşılı(bağışıklı) insan mı, pkkt mi, standart mi ?
+// bas yetmez bagisik pkkt standart ?
+
+// hafifYara bir yara mı(kat. 2)?
+// hafifYara +/- ?
+
+// gözlem imkanı var mı?
+// imkan +/- ?
+
+// hayvan son 1 sene içinde kuduz aşısı olmuş mu?
+//  hayvanAsi +/- ?
+
+// gözlem sorunsuz mu gidiyor?
+// sorunsuz +/- ?
+
+// ilk aşı yapılalı yedi günden az mı oldu
+// yedidenAz +/- ?
+
+
+// sonuçlar: asi-noasi, ig-noig, gozlem-nogozlem, asi2doz,asivegozlem, hicbirsey
+
+
+let kediKopek, ozelDurum, hafifYara, imkan, hayvanAsi, sorunsuz, yedidenAz;
+let ozelDurumlar = ["bas", "yetmez", "bagisik", "tirmik"];
+// HIDE ALL SECTIONS BUT FIRST
+function hideAllButFirst() {
+    document.querySelectorAll("main>section:not(.first)").forEach((el) => {
+        display.off(el)
+    })
+}
+
+
+
+function kdz() {
+
+    if (!kediKopek) {
+        // aid 0
+        alert("developing");
+    } else {
+        // aid 1
+        if (ozelDurum == "bas" || ozelDurum == "yetmez") {
+            // aid 11           // exit
+            alert("asi,ig");
+        } else if (ozelDurum == "bagisik") {
+            // aid 12           // exit
+            alert("asi2doz");
+        } else if (ozelDurum == "tirmik") {
+            // aid 13           // exit
+            alert("hicbirsey");
+        } else {
+            // aid 10
+            if (hafifYara) {
+                // aid 101
+                if (imkan) {
+                    // aid 1011
+                    alert("gozlem");
+                    if (sorunsuz) {
+                        // aid 10111            // exit
+                        alert("noasi,noig");
+                    } else {
+                        // aid 10110            // exit
+                        alert("asi,noig");
+                    }
+                } else {
+                    // aid 1010         // exit
+                    alert("asi,noig");
+                }
+            } else {
+                // aid 100
+                if (hayvanAsi) {
+                    // aid 1001
+                    imkan = true; // öyle varsayılıyor
+                    // aid 10011
+                    alert("noasi,noig,gozlem");
+                    if (sorunsuz) {
+                        // aid 100111           // exit
+                        alert("hicbirsey");
+                    } else {
+                        // aid 100110           // exit
+                        alert("asi,ig");
+                    }
+                } else {
+                    // aid 1000
+                    if (imkan) {
+                        // aid 10001
+                        alert("asi,gozlem");
+                        if (sorunsuz) {
+                            // aid 100011           // exit
+                            alert("hicbirsey");
+                        } else {
+                            // aid 100010
+                            if (yedidenAz) {
+                                // aid 1000101          // exit
+                                alert("ig");
+                            } else {
+                                // aid 100100           // exit
+                                alert("hicbirsey");
+                            }
+                        }
+                    } else {
+                        // aid 10000            // exit
+                        alert("asi,ig");
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+
+// function ileri(obje = {}) {
+//     [sayfa.konu.innerText, sayfa.soru.innerText] = [obje.konu, obje.soru]
+//     while (sayfa.siklar.children.length) { sayfa.siklar.children.item(0).remove() }
+    
+
+//     let siklar = obje.siklar
+//     let a = 0
+//     console.clear()
+//     Object.keys(siklar).forEach((key) => {
+//         let but = document.createElement("button")
+//         let sik = siklar[key]
+//         but.innerText = a + " | " + sik.etiket
+
+//         but.addEventListener("click", (e) => { ileri(sik.sonraki) })
+//         console.log(a++, "sonraki şıklar>>>", sik.sonraki?.siklar);
+//         sayfa.siklar.append(but)
+//     })
+// }
+
+// ileri(algObj3)
+
+
+
+<p>Lorem Ipsum <audio id="sound1" src="assets/donkey2.mp3" preload="auto"></audio><a class="icon fa-volume-up" onclick="document.getElementById('sound1').play();"></a>

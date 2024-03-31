@@ -5,7 +5,7 @@ const sayfa = {
     siklar: document.querySelector(".siklar")
 }
 
-
+let sonucMetin1 = `Kedi/köpek 10 gün boyunca gözlem altında tutulur. Hayvanın kaçması, ölmesi, hastalık belirtisi göstermesi durumunda ilk aşıdan itibaren 7 gün geçmedi ise aşı ve Ig uygulanır.`
 const algObj3 = {
     konu: "Temas Türü",
     soru: "Kedi veya köpek yaralanması mı?",
@@ -30,10 +30,24 @@ const algObj3 = {
                                         siklar: {
                                             imkan: {
                                                 etiket: "evet",
-                                                sonuc: {
-                                                    gozlem: {
-                                                        sorunsuz: { gozSonuc: "hicbirsey" },
-                                                        sorunsuz$: { gozSonuc: "asi" },
+                                                sonraki: {
+                                                    konu:"gozlem",
+                                                    soru: `Kedi/köpek 10 gün boyunca gözlem altında tutulur. Hayvanın kaçması, ölmesi, hastalık belirtisi göstermesi durumunda aşı uygulanır.`,
+                                                    siklar: {
+                                                        hayvanSag: {
+                                                            etiket:"hayvan iyi",sonraki:{
+                                                                konu:"SON",
+                                                                soru:"Herhangi bir ek işleme gerek yok.",
+                                                                siklar:{son:{etiket: "son"}}
+                                                            }, 
+                                                        },
+                                                        hayvanSag$: {
+                                                            etiket:"Aksi halde",sonraki:{
+                                                                konu:"",
+                                                                soru:"",
+                                                                siklar:{}
+                                                            }, 
+                                                        },
                                                     }
                                                 }
                                             },
@@ -60,8 +74,8 @@ const algObj3 = {
                                                         imkan: {
                                                             sonuc: {
                                                                 gozlem: {
-                                                                    sorunsuz: "hicbirsey",
-                                                                    sorunsuz$: { gozSonuc: "asi + ig" },
+                                                                    hayvanSag: "hicbirsey",
+                                                                    hayvanSag$: { gozSonuc: "asi + ig" },
                                                                 }
                                                             }
                                                         },
@@ -78,8 +92,8 @@ const algObj3 = {
                                                         imkan: {
                                                             sonuc: {
                                                                 asiVeGozlem: {
-                                                                    sorunsuz: { gozSonuc: "hicbirsey" },
-                                                                    sorunsuz$: {
+                                                                    hayvanSag: { gozSonuc: "hicbirsey" },
+                                                                    hayvanSag$: {
                                                                         gozSonuc: {
                                                                             yedidenAz: "asi + ig", yedidenAz$: "asi"
                                                                         }
@@ -138,22 +152,33 @@ const algObj3 = {
  */
 
 
-function ileri(obje = {}) {
-    [sayfa.konu.innerText, sayfa.soru.innerText] = [obje.konu, obje.soru]
+function ileri(obje) {
+
+    let { konu, soru, siklar } = obje
     while (sayfa.siklar.children.length) { sayfa.siklar.children.item(0).remove() }
+    [sayfa.konu.innerText, sayfa.soru.innerText] = [konu, soru]
 
-    let siklar = obje.siklar
-    let a = 0
-    console.clear()
-    Object.keys(siklar).forEach((key) => {
-        let but = document.createElement("button")
-        let sik = siklar[key]
-        but.innerText = a + " | " + sik.etiket
 
-        but.addEventListener("click", (e) => { ileri(sik.sonraki) })
-        console.log(a++, "sonraki şıklar>>>", sik.sonraki?.siklar);
-        sayfa.siklar.append(but)
+    Object.keys(siklar).forEach((sikKey) => {
+        let sik = siklar[sikKey]
+
+        let btn = document.createElement("button")
+        btn.innerText = sik.etiket
+        btn.addEventListener("click", (e) => {
+
+            if (sik?.sonraki) {
+                ileri(sik.sonraki)
+
+            } else {
+                let sonuc = sik.sonuc
+                sayfa.konu = 
+                console.log(sik);
+            }
+        })
+        sayfa.siklar.append(btn)
     })
 }
 
 ileri(algObj3)
+
+
