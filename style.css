@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    height: 99.9vh;
+    height: 100vh;
     background-color: #bdbdbd;
 }
 
@@ -22,12 +22,17 @@ body * {
     /* border: 1px dotted red; */
 }
 
-nav,
-footer {
+nav {
+    height: 6vh;
+    background-color: rgb(196, 209, 209);
+    overflow-y: scroll;
+}
+
+
+/* footer {
     height: 4vh;
     background-color: rgb(196, 209, 209);
-
-}
+} */
 
 main {
     height: 92%;
@@ -42,33 +47,16 @@ section {
 
 }
 
-.konu {
-    height: 9%;
+.baslik {
+    height: 8%;
     font-size: 1.75rem;
     background-color: hsl(180, 100%, 22%);
     align-content: center;
-    /* text-decoration: underline; */
-    font-family: monospace;
-    font-family: serif;
-    font-family: sans-serif;
-    font-family: fantasy;
-    font-family: cursive;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-    font-family: 'Times New Roman', Times, serif;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-family: Arial, Helvetica, sans-serif;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-family: 'Courier New', Courier, monospace;
-    font-family: Georgia, 'Times New Roman', Times, serif; /* * */
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; /* * */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.soru {
-    height: 18%;
+.metin {
+    height: 22%;
     font-size: 1.5rem;
     background-color: teal;
     align-content: center;
@@ -76,13 +64,13 @@ section {
 
 
 div {
+    height: 64%;
+    width: max(80%,360px);
     display: flex;
     flex-direction: column;
     /* justify-content: space-evenly; */
     align-items: center;
     /* background-color: #ddd; */
-    height: 64%;
-    width: 80%;
     margin: auto;
 }
 
@@ -92,13 +80,13 @@ button {
     width: 100%;
     color: #404040;
     font-size: 1.5rem;
-    text-transform: uppercase;
+    text-transform: none;
     border: none;
     align-items: center;
     flex-grow: 1;
     border-bottom: 2vh solid hsl(180, 100%, 23%);
     cursor: pointer;
-    padding: 0rem 1rem;
+    padding: 0rem 0.5rem;
     /* line-height: 2rem; */
 
 
@@ -126,4 +114,8 @@ article.farkliTemas {
     width: 80vw;
     height: 80vh;
     background-color: #404040;
+}
+
+.hide {
+    display: none;
 }

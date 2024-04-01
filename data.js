@@ -4,31 +4,36 @@ export const algObj = {
   metin: "Kedi veya köpek yaralanması mı?",
   siklar: {
     kediKopek: {
-      etiket: "evet",
+      etiket: "Evet",
       sonraki: {
         baslik: "Özel Durum",
         metin: "Hangi özel durum mevcut?",
         siklar: {
           ozelDurum$: {
-            etiket: "hicbiri",
+            etiket: "Hiçbiri",
             sonraki: {
+              catal: {
+                msg:"hello",
+                fn: function(name) {console.log(this.msg + " " + name)} 
+               },
               baslik: "Temas Biçimi",
               metin: "Temas biçimi hangi gruba giriyor?",
               siklar: {
                 hafifYara: {
-                  etiket: `Çıplak derinin hafifçe sıyrılması (deri altına geçmeyen yaralanmalar)\nKanama olmadan küçük tırmalama veya zedeleme `,
+
+                  etiket: `•Çıplak derinin hafifçe sıyrılması (deri altına geçmeyen yaralanmalar)\n\n•Kanama olmadan küçük tırmalama veya zedeleme `,
                   sonraki: {
                     baslik: "Gözlem İmkanı",
                     metin: "Hayvanı gözetim altında tutma imkanı var mı?",
                     siklar: {
                       imkan: {
-                        etiket: "evet",
+                        etiket: "Evet",
                         sonraki: {
-                          baslik: "gozlem",
+                          baslik: "Gözlem",
                           metin: `Kedi/köpek 10 gün boyunca gözlem altında tutulur. Hayvanın kaçması, ölmesi, hastalık belirtisi göstermesi durumunda aşı uygulanır.`,
                           siklar: {
                             hayvanSag: {
-                              etiket: "hayvan iyi",
+                              etiket: "Hayvan Sağlıklı",
                               sonraki: {
                                 baslik: "SON",
                                 metin: "Herhangi bir ek işleme gerek yok.",
@@ -47,7 +52,7 @@ export const algObj = {
                         }
                       },
                       imkan$: {
-                        etiket: "hayır",
+                        etiket: "Hayır",
                         sonraki: {
                           baslik: "Aşı",
                           metin: "Aşı uygulanır. Ig uygulanmaz.",
@@ -59,19 +64,19 @@ export const algObj = {
                   }
                 },
                 hafifYara$: {
-                  etiket: `Deriyi zedeleyen tek veya çok sayıda ısırma ve tırmalamalar\nMukozaların, açık cilt yaralarının hayvanın salyası ile temas etmesi\nLezyonun kafa, boyun, parmak uçları gibi sinir uçlarının yoğun olduğu bölgelerde olması`,
+                  etiket: `•Deriyi zedeleyen tek veya çok sayıda ısırma ve tırmalamalar\n\n•Mukozaların, açık cilt yaralarının hayvanın salyası ile temas etmesi\n\n•Lezyonun kafa, boyun, parmak uçları gibi sinir uçlarının yoğun olduğu bölgelerde olması`,
                   sonraki: {
                     baslik: "Hayvan Aşı Durumu",
                     metin: "İgili hayvan son 1 sene içinde kuduz aşısı olmuş mu?",
                     siklar: {
                       hayvanAsi: {
-                        etiket: "evet",
+                        etiket: "Evet",
                         sonraki: {
                           baslik: "Gözlem",
                           metin: `Kedi/köpek 10 gün boyunca gözlem altında tutulur. Hayvanın kaçması, ölmesi, hastalık belirtisi göstermesi durumunda aşı ve Ig uygulanır.`,
                           siklar: {
                             hayvanSag: {
-                              etiket: "hayvan sağlıklı",
+                              etiket: "Hayvan sağlıklı",
                               sonraki: {
                                 baslik: "SON",
                                 metin: "Herhangi bir ek işleme gerek yok.",
@@ -91,19 +96,19 @@ export const algObj = {
                         }
                       },
                       hayvanAsi$: {
-                        etiket: "hayır",
+                        etiket: "Hayır",
                         sonraki: {
                           baslik: "Gözlem İmkanı",
                           metin: "Hayvanı gözetim altında tutma imkanı var mı?",
                           siklar: {
                             imkan: {
-                              etiket: "evet",
+                              etiket: "Evet",
                               sonraki: {
                                 baslik: "Gözlem",
                                 metin: "`Aşı uygulanır.Kedi/köpek 10 gün boyunca gözlem altında tutulur. Hayvanın kaçması, ölmesi, hastalık belirtisi göstermesi durumunda Ig uygulanır(ilk aşıdan sonra 7 gün geçtiyse uygulanmaz).`,",
                                 siklar: {
                                   hayvanSag: {
-                                    etiket: "hayvan sağlıklı",
+                                    etiket: "Hayvan sağlıklı",
                                     sonraki: {
                                       baslik: "SON",
                                       metin: "Herhangi bir ek işleme gerek yok.",
@@ -122,7 +127,7 @@ export const algObj = {
                               },
                             },
                             imkan$:{
-                              etiket: "hayır",
+                              etiket: "Hayır",
                               sonraki: {
                                 baslik: "Aşı ve Ig",
                                 metin: "Aşı ve Ig uygulanır.",
@@ -177,15 +182,15 @@ export const algObj = {
 
       }
     },
-    kediKopek$: {
-      etiket: "hayır",
+    /* kediKopek$: {
+      etiket: "Hayır",
       sonraki:
       {
         baslik: "Farklı Temaslar",
         metin: "Temas hangisine uyuyor?",
         get siklar() { display.on(sayfa.farkliTemas); return "" }  // sonra eklenecek
       }
-    },
+    }, */
 
   },
 }
